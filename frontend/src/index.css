@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  :root {
+    --background: #080808;
+    --surface: #111111;
+    --elevated: #171717;
+    --border: #292929;
+    --primary-text: #F5F5F5;
+    --secondary-text: #A1A1A1;
+    --muted-text: #6F6F6F;
+    --accent: #C084FC;
+    --luxury-gold: #D4AF37;
+    --radius: 1rem;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    background-color: #080808;
+    color: #F5F5F5;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background-color: #111111;
+    border: 1px solid #292929;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-brand {
+    font-family: 'Cinzel', serif;
+  }
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+  }
+
+  .gold-gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(135deg, #FDF0A6 0%, #D4AF37 50%, #997A15 100%);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #292929;
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #383838;
+  }
+}
