@@ -8,6 +8,7 @@ Guarantees:
 - Saves segmented masks for visual verification in debug mode
 """
 
+from __future__ import annotations
 import cv2
 import numpy as np
 import httpx

@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     PORT: int = 8000
     HOST: str = "0.0.0.0"
     API_PREFIX: str = "/api/v1"
+    PRELOAD_MODELS: bool = False
     
     # Frontend / CORS
     FRONTEND_URL: str = ""

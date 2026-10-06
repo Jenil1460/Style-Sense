@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys
 import os
 import logging
@@ -55,6 +56,13 @@ from app.utils.exceptions import (
 async def _async_model_warmup():
     """Warms up ML models in the background without delaying server port binding."""
     try:
+        # On memory-constrained cloud environments like Render Free Tier (512MB RAM),
+        # eager loading all ML models simultaneously causes immediate OOM (Out Of Memory) crash.
+        # Models load on-demand when user requests analysis.
+        if (os.getenv("RENDER") or settings.ENV == "production") and not getattr(settings, "PRELOAD_MODELS", False):
+            logger.info("STARTUP: Running on cloud deployment (Render/Production). Skipping eager model preload to preserve memory. Models will load on-demand.")
+            return
+
         logger.info("STARTUP: background model initialization started...")
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, model_registry.initialize)

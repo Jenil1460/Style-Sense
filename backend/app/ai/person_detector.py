@@ -16,6 +16,7 @@ Guarantees:
 - Returns person detected status, normalized & pixel bounding boxes, and confidence.
 """
 
+from __future__ import annotations
 import cv2
 import numpy as np
 import httpx
