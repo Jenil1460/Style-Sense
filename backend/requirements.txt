@@ -24,3 +24,4 @@ torch>=2.0.0
 open-clip-torch>=2.24.0
 google-genai>=1.0.0
 openai>=1.0.0
+gradio-client>=1.0.0

@@ -8,9 +8,12 @@ import io
 import time
 import logging
 import asyncio
-import httpx
 from PIL import Image, ImageOps
-from gradio_client import Client, handle_file
+try:
+    from gradio_client import Client, handle_file
+except ImportError:
+    Client = None
+    handle_file = None
 
 from app.config.settings import settings
 from app.services.ml.garment_synthesis_service import GarmentSynthesisService
@@ -71,6 +74,8 @@ class HFIDMVtonService:
 
         # 3. Call HuggingFace yisol/IDM-VTON Gradio Client
         def _call_gradio():
+            if Client is None or handle_file is None:
+                raise RuntimeError("gradio_client is not installed on this server. Add gradio-client to requirements.txt.")
             client = Client("yisol/IDM-VTON", token=hf_token if hf_token else None)
             
             editor_data = {
