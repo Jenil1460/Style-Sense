@@ -16,6 +16,7 @@ import asyncio
 import io
 import os
 import base64
+from typing import Any
 from PIL import Image
 
 logger = logging.getLogger(__name__)
